@@ -47,6 +47,9 @@
  :mvn/repos {"central" {:url "https://repo1.maven.org/maven2/"}
              "clojars" {:url "https://repo.clojars.org/"}
 
+             ;; Two Stewards
+             "datomic-cloud" {:url "s3://datomic-releases-1fc2183a/maven/releases"}
+
              ;; Clojure snapshots
              ;; "sonatype" {:url "https://oss.sonatype.org/content/repositories/snapshots/"}
 
@@ -73,10 +76,21 @@
 
  :aliases
  {;; ---------------------------------------------------
+  ;; Two Stewards development environment
+
+  ;; from https://docs.datomic.com/cloud/operation/howto.html#ion-dev
+  :ion-dev
+  {:deps {com.datomic/ion-dev {:mvn/version "1.0.306"}}
+   :main-opts ["-m" "datomic.ion.dev"]}
+
+  ;; End Two Stewards development environment
+  ;; ---------------------------------------------------
+
+  ;; ---------------------------------------------------
   ;; Development environment
 
   ;; Custom REPL startup
-  ;; A `user` namespace is loaded during REPL startup if found on the class path  
+  ;; A `user` namespace is loaded during REPL startup if found on the class path
   ;; `:dev` aliases include the `dev` directory on the class path
   ;; `dev/user.clj` can define tools and code that runs when starting the REPL
   ;; https://practical.li/clojure/clojure-cli/repl-startup/
